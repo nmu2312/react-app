@@ -26,8 +26,17 @@ jobs:
     - name: Build
       run: yarn build
       
-    - name: App Deploy
+    - name: Deploy to Github Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: build
+        
+    - name: Sync Files
+      uses: SamKirkland/FTP-Deploy-Action@4.2.0
+      env:
+        FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        LOCAL_DIR: build
+        REMOTE_DIR: /html/mukai
