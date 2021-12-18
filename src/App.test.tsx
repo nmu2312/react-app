@@ -9,5 +9,5 @@ test('renders learn react link', () => {
 });
 
 test('sample', () => {
-  expect(2 === 1 * 1).toBe(true);
+  expect(1 === 1 * 1).toBe(true);
 });
